@@ -16,7 +16,8 @@ def search(state, goal_state):
     """A* tree search using misplaced tiles heuristic"""
 
     def gn(node):
-        return node.gn()
+        #return node.gn()
+        return node.gn_1()
 
     tiles_places = []
     for i in range(len(goal_state)):

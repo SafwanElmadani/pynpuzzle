@@ -16,7 +16,8 @@ def search(state, goal_state):
     """A* tree search using manhattan distance heuristic"""
 
     def gn(node):
-        return node.gn()
+        #return node.gn()
+        return node.gn_1()
 
     tiles_places = []
     for i in range(len(goal_state)):
@@ -27,7 +28,12 @@ def search(state, goal_state):
         cost = 0
         for i in range(len(node.state)):
             for j in range(len(node.state)):
-                tile_i, tile_j = tiles_places[node.state[i][j]][1]
+                if node.state[i][j] == 0:
+                    continue
+                matched_tile = [x for x in tiles_places if x[0] == node.state[i][j]]
+                if matched_tile:
+                    tile_i, tile_j = matched_tile[0][1]
+                #tile_i, tile_j = tiles_places[node.state[i][j]][1]
                 if i != tile_i or j != tile_j:
                     cost += abs(tile_i - i) + abs(tile_j - j)
         return cost
