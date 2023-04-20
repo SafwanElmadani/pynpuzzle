@@ -16,8 +16,7 @@ def search(state, goal_state):
     """Iterative deepening A* with manhattan distance heuristic"""
     """Adding f(n)=g(n)+h(n) the heuristic part"""
     def gn(node):
-        return node.gn()
-    def gn_1(node):
+        #return node.gn()
         return node.gn_1()
 
     tiles_places = []
@@ -40,9 +39,7 @@ def search(state, goal_state):
         return cost
 
     def fn(node):
-        x = gn_1(node)
-        y = hn(node)
-        return gn_1(node) + hn(node)
+        return gn(node) + hn(node)
 
 
 

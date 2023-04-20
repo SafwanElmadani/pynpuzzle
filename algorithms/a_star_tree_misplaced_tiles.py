@@ -39,7 +39,6 @@ def search(state, goal_state):
         return misplace_count
 
     def fn(node):
-        y = hn(node)
         return gn(node) + hn(node)
 
     return bfs.search(state, goal_state, fn)
