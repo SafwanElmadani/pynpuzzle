@@ -81,3 +81,7 @@ class Node:
             costs += parent.cost
 
         return costs
+
+    def gn_1(self):
+        costs = self.depth
+        return costs

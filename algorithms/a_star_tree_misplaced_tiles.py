@@ -29,12 +29,16 @@ def search(state, goal_state):
             for j in range(len(node.state)):
                 if node.state[i][j] == 0:
                     continue
-                tile_i, tile_j = tiles_places[node.state[i][j]][1]
+                matched_tile = [x for x in tiles_places if x[0] == node.state[i][j]]
+                if matched_tile:
+                    tile_i, tile_j = matched_tile[0][1]
+                #tile_i, tile_j = tiles_places[node.state[i][j]][1]
                 if i != tile_i or j != tile_j:
                     misplace_count += 1
         return misplace_count
 
     def fn(node):
+        y = hn(node)
         return gn(node) + hn(node)
 
     return bfs.search(state, goal_state, fn)
