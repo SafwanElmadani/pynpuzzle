@@ -67,7 +67,8 @@ class Node:
         new_states = operator(self.state)
         self.children = []
         for state in new_states:
-            self.children.append(Node(state, self, self.cost + 1, self.depth + 1))
+            if not self.check_if_state_exists(state):
+                self.children.append(Node(state, self, self.cost + 1, self.depth + 1))
 
     def parents(self):
         current_node = self
@@ -85,3 +86,10 @@ class Node:
     def gn_1(self):
         costs = self.depth
         return costs
+
+    def check_if_state_exists(self, new_state):
+        for parent in self.parents():
+            if (new_state == parent.state):
+                return True
+        return False
+
